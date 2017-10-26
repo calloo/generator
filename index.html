@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>Sampling</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
@@ -16,6 +16,9 @@
 	function generate(){
 		if (sample_size === 0) {
 			sample_size = parseInt(document.forms["myform"]["person"].value);
+		}
+		if (sample_size === 1) {
+			document.getElementById("id01").style.display = "block";
 		}
 		size = sample_size;
 
@@ -50,9 +53,7 @@
 		sample_size--;
 
 		document.getElementById("result").innerHTML = "Person selected is : " + result;
-		if (sample_size === 1) {
-			document.getElementById("id01").style.display = "block";
-		}
+		
 
 
 
