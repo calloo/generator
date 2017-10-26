@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+	sample = [];
+	sample_size = 0;
+
+	function make_sample(size){
+		for (var i = 0; i < size; i++) {
+			sample.push(i+1);
+		}
+	}
+
+	function generate(){
+		if (sample_size === 0) {
+			sample_size = parseInt(document.forms["myform"]["person"].value);
+		}
+		size = sample_size;
+
+		if (sample.length <= 0){
+			make_sample(size);
+		}
+
+		
+
+		var index = Math.floor(Math.random() * size);
+		var result = sample[index];
+
+		sample.splice(index, 1);
+
+		// while (true){
+		// 	found = false;
+
+		// 	for (var i = 0; i < sample.length; i++) {
+		// 		if (sample[i] === undefined) {
+		// 			sample[i] = sample[i+1];
+		// 			delete sample[i+1];
+
+		// 			found = true;
+		// 		}
+		// 	}
+
+		// 	if (!found) {
+		// 		break;
+		// 	}
+		// }
+
+		sample_size--;
+
+		document.getElementById("result").innerHTML = "Person selected is : " + result;
+		if (sample_size === 1) {
+			document.getElementById("id01").style.display = "block";
+		}
+
+
+
+	}
+</script>
+<body>
+
+<div class="w3-container w3-center">
+  <h2>Random Question</h2>
+
+  <div class="w3-card-4 w3-blue" style="width:30%; margin-left: 35%; margin-top: 3%;">
+
+    <div class="w3-container w3-center">
+      <h3>Simple Random Sampling</h3>
+      <img src="avatar.png" alt="Avatar" style="width:25%; height:25%;">
+      <h5>Person</h5>
+
+      <div class="w3-section">
+        <form class="w3-container" name= "myform" onsubmit="event.preventDefault(); generate();">
+  			<p>
+  				<label>Number of Persons</label>
+  				<input class="w3-input" type="number" name="person"></p>
+            <input type="submit" name="pick" value="pick person"> <br> <br>
+            <output id="result"></output>
+		</form>
+      </div>
+    </div>
+
+  </div>
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Please reset sample to randomly select other persons</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
